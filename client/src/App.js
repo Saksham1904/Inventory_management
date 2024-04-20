@@ -15,23 +15,37 @@ function App() {
     <div className="App">
       app
     
-      {/* <Routes>
+      <Routes>
         <Route path='/login' element={<Form/>}/>
+      
         <Route 
+
       element={
         <PrivateRoute>
           <Dashboard />
+        
         </PrivateRoute>
       }
     >
-        <Route path="/dashboard" element={<Dashboard />}/>
-          <Route path="/add" element={<ADD />} />
-          <Route path="/form" element={<Form />} />
+       
+       <Route path="/dashboard" element={<Dashboard />}/>
+       </Route>
+       <Route 
+
+element={
+  <PrivateRoute>
+    <ADD />
+  
+  </PrivateRoute>
+}
+>
+       <Route path="/dashboard/add" element={<ADD />} />
           </Route>
+         
          </Routes>
-        */}
+       
       
-    <ADD/>
+   
 
 
     </div>

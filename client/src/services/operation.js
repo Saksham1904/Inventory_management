@@ -49,12 +49,12 @@ export async function productdata(name, category) {
 
 
 export async function productadd(name, category, discount, price, quantity, des,image) {
-
+  
   const { ADDINVT_API } = endpoint
   const toastId = toast.loading("Loading...")
   console.log(image)
   try {
-    const response = await apiconnector("POST", ADDINVT_API, { name, category, discount, price, quantity, des,image })
+    const response = await apiconnector("POST", ADDINVT_API, { name, category, discount, price, quantity, des,image})
     console.log(response)
     toast.success("PRODUCT ADDED")
   } catch (error) {

@@ -15,7 +15,7 @@ exports.addcategory=async(req,res)=>{
            })
     })
 }catch(error){
-    console.log(error)
+  
     res.status(403).json({
         status:false,
         message:"category not added"
@@ -25,6 +25,7 @@ exports.addcategory=async(req,res)=>{
 
 
 exports.getallcategory=async(req,res)=>{
+  try{
       con.query("SELECT name FROM category",(error,result)=>{
         if(error) throw error
         console.log(result)
@@ -33,9 +34,40 @@ exports.getallcategory=async(req,res)=>{
             result,
            })
       })
+    }
+    catch(error){
+      res.status(403).json({
+        success:false,
+        message:"CATEGORY CANT FETCH"
+      })
+    }
 }
 
+
+exports.deletecategory=async(req,res)=>{
+  try{
+    const {name}=req.body
+    con.query("DELETE FROM category WHERE name = ?",[name],(error,result)=>{
+      if(error) throw error
+      console.log(result)
+      res.status(200).json({
+          status:true,
+          result,
+         })
+    })
+  }
+  catch(error){
+    res.status(403).json({
+      success:false,
+      message:"CATEGORY CANT DELETE"
+    })
+  }
+
+}
+
+
 exports.searchproduct=async(req,res)=>{
+  try{
     const { category, name } = req.query;
   let sql = 'SELECT * FROM product WHERE 1=1'; // Always true condition to start the WHERE clause
 
@@ -59,3 +91,11 @@ exports.searchproduct=async(req,res)=>{
     })
   })
 }
+catch(error){
+  res.status(403).json({
+    success:false,
+    message:"product data cant fetch"
+  })
+}
+}
+

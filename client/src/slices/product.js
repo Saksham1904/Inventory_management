@@ -5,7 +5,7 @@ const initialstate={
     data:null,
     loading:false,
     category:null,
-    token: null
+    token: localStorage.getItem("token") ? JSON.parse(localStorage.getItem("token")):null
 }
 
 const productSlice=createSlice({
@@ -19,7 +19,7 @@ const productSlice=createSlice({
             state.data=value.payload
          },
          setcategory(state,value){
-            state.data=value.payload
+            state.category=value.payload
          },
          settoken(state,value){
             state.token=value.payload
