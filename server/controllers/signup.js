@@ -1,8 +1,8 @@
 
 
 const bcypt=require("bcrypt")
-const jwt=require("jsonwebtoken")
-const user=require("../models/user")
+//const jwt=require("jsonwebtoken")
+//const user=require("../models/user")
 const dotenv=require("dotenv")
 dotenv.config()
 const con=require("../database/database")
@@ -87,39 +87,39 @@ exports.login=async(req,res)=>{
     try{
         
         const{email,password}=req.body;
-        if(!email||!password)(
-         res.status(403).json({
-                message:"all fields not set",
-            })
-        )
-        const  check=await user.findOne({email})
-        if(!check){
-            res.status(403).json({
-                message:"user not exist",
-            })
-        }
+        // if(!email||!password)(
+        //  res.status(403).json({
+        //         message:"all fields not set",
+        //     })
+        // )
+        const res=[]
+        con.query("select password,uid from users where email=?",[email],(error,result)=>{
+            if(error) throw error
+            console.log(result)
+           
+    //     if(!check){
+    //         res.status(403).json({
+    //             message:"user not exist",
+    //         })
+    //     }
 
-        const pass=await bcypt.compare(password,check.password)
-        if(!pass){
-          return  res.status(403).json({
-                message:"Password is incorrect",
-            })
-        }
-        const jsontoken=jwt.sign({
-            email:email,userid:check._id
-        },process.env.JWT_KEY,{
-            expiresIn:Math.floor(Date.now() / 1000) + (60 * 60)
-        })
+    //     const pass=await bcypt.compare(password,check.password)
+    //     if(!pass){
+    //       return  res.status(403).json({
+    //             message:"Password is incorrect",
+    //         })
+    //     }
+       
 
-    check.token=jsontoken;
-    check.password=undefined;
+    // check.token=jsontoken;
+    // check.password=undefined;
 
 
-   return res.status(200).json({
-            success: true,
-            jsontoken,
-            check,
-            message: "User registered successfully",
+//    return res.status(200).json({
+//             success: true,
+//             res,
+          
+//             message: "User registered successfully",
 
     })}
     catch(error){

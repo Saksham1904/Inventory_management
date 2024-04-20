@@ -1,44 +1,20 @@
 
 
-const cloudinary=require("cloudinary").v2
-
-
-
-
-const fileupload=async(file,folder)=>{
-    try{
-    const options={folder}
-     const response=await cloudinary.uploader.upload(file.tempFilePath,options)
-    const url=response.url
-    return url;
-    
-    }
-    
-    catch(error){
-        console.log(error)
-    }
-}
-
+const con=require("../database/database")
 
 exports.addinvt=async(req,res)=>{
     try{
-    const{name,price,des,category,discount,quantity,image}=req.body;
-    
-
-    // const supportfiletype=["png","jpeg","jpg"]
-    // const filetype=file.name.split(".")[1].toLowerCase()
-
-    // if(!(supportfiletype.includes(filetype))){
-    //     res.status(400).json({
-    //         sucess:false,
-    //         message:"file type not supported",
-    //     })
-    // }
-    // const url=fileupload(file,"saksham")
-    // console.log(url);
-    res.status(200).json({
-        success:true
+    const{name,price,des,category,discount,quantity}=req.body;
+    const product=[name, price, quantity, discount, des, category]
+    con.query("INSERT INTO product(name, price, quantity, discount, description, category) values (?)",[product],(error,result)=>{
+        if(error) throw error;
+        console.log(result)
+        res.status(200).json({
+         status:true,
+         result,
+        })
     })
+    
     }
     catch(error){
         console.log(error)
