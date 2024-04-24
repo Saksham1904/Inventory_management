@@ -13,9 +13,9 @@ function App() {
   
   return (
     <div className="App">
-      app
+      {/* app */}
     
-      <Routes>
+      {/* <Routes>
         <Route path='/login' element={<Form/>}/>
       
         <Route 
@@ -45,9 +45,9 @@ element={
          </Routes>
        
       
-   
+    */}
 
-
+<Dashboard/>
     </div>
   );
 }

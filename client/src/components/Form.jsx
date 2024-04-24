@@ -56,25 +56,41 @@ const Form = () => {
   };
   return (
     //value is added to maintain state of particular variable as change in usestate lead to rerender the jsx code
-    <div>
-      <form onSubmit={sumbithandler}>
-        <input
-          type="text"
-          placeholder="email"
-          name="email"
-          onChange={changehandler}
-          value={data.email}
-        ></input>
-        <input
-          type="password"
-          placeholder="password"
-          name="password"
-          onChange={changehandler}
-          value={data.password}
-        ></input>
+    <div className="bg-salylite">
+      <div className="flex justify-center items-center h-screen flex-col">
+        <form onSubmit={sumbithandler} className="bg-white w-[511px] h-[419px] rounded-[12px] shadow-md">
+        <div className="mt-8 mb-16 ml-[206px] text-4xl font-outfit font-bold text-dgreen">Log In</div>
+        <div>
+          <input
+            type="text"
+            placeholder="email"
+            name="email"
+            onChange={changehandler}
+            value={data.email}
+            className="mb-2 py-3 px-3 ml-[60px] text-2xl font-outfit font-regular opacity-62 text-dgreen bg-grey rounded-2xl w-391"
+          ></input>
+          </div>
+          <div>
+          <input
+            type="password"
+            placeholder="password"
+            name="password"
+            onChange={changehandler}
+            value={data.password}
+            className="py-3 px-3 text-2xl ml-[60px] font-outfit font-regular opacity-62 text-dgreen bg-grey rounded-2xl w-391"          
+          ></input>
+          </div>
 
-        <button>Sumbit</button>
-      </form>
+          <div>
+          <button className="w-150 mt-8 mb-16 ml-[181px] text-2xl bg-bluee hover:bg-dbluee text-white font-outfit font-medium py-3 px-2.5 rounded-full">Log In</button>
+          </div>
+        </form>
+      </div>
+
+      {/* <div className="absolute mt-[318px] ml-[576px] mr-0">
+      <img src="/Saly-38.png" alt="bg-image"/>
+      </div> */}
+
     </div>
   );
 };

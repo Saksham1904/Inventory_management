@@ -4,7 +4,28 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        bluee: '#01AFF6',
+        dbluee: '#0192CB', 
+        dgreen: '#054753',
+        grey: '#EDEDED',
+      },
+      fontFamily: {
+        outfit: ['Outfit', 'sans-serif'],
+      },
+      opacity: {
+        '62': '.61.8',
+      },
+      width: {
+        '391': '24.4375rem',
+        '150': '9.375rem',
+      },
+      // backgroundImage: {
+      //   'salylite': "url('client/src/assets/Saly38.png')",
+      //   'saly': "url('client/src/assets/Saly.png')",
+      // },
+    },
   },
   plugins: [],
 }
