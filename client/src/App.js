@@ -4,33 +4,45 @@ import Dashboard from "./components/Dashboard";
 import Form from "./components/Form";
 import { Route, Routes } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute";
+import Login from "./components/Login";
 
 function App() {
   return (
     <div className="App">
-      app
+      {/* app */}
+    
       <Routes>
-        <Route path="/login" element={<Form />} />
+        <Route path='/login' element={<Form/>}/>
+      
+        <Route 
 
-        <Route
-          element={
-            <PrivateRoute>
-              <Dashboard />
-            </PrivateRoute>
-          }
-        >
-          <Route path="/dashboard" element={<Dashboard />} />
-        </Route>
-        <Route
-          element={
-            <PrivateRoute>
-              <ADD />
-            </PrivateRoute>
-          }
-        >
-          <Route path="/dashboard/add" element={<ADD />} />
-        </Route>
-      </Routes>
+      element={
+        <PrivateRoute>
+          <Dashboard />
+        
+        </PrivateRoute>
+      }
+    >
+       
+       <Route path="/dashboard" element={<Dashboard />}/>
+       </Route>
+       <Route 
+
+element={
+  <PrivateRoute>
+    <ADD />
+  
+  </PrivateRoute>
+}
+>
+       <Route path="/dashboard/add" element={<ADD />} />
+          </Route>
+         
+         </Routes>
+       
+      
+   
+
     </div>
   );
 }

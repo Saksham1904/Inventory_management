@@ -16,7 +16,7 @@ router.post("/signup",signup)
 
 router.post("/add",auth,addinvt)
 router.post("/addcategory",addcategory)
-router.delete("/deleteproduct",auth,deleteproduct)
+router.delete("/deleteproduct",deleteproduct)
 
 router.get("/search",searchproduct)
 router.put("/update",auth,updateproduct)

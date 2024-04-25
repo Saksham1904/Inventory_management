@@ -1,6 +1,7 @@
 const dotenv = require("dotenv");
 dotenv.config();
 const con = require("../database/database");
+const bcrypt=require("bcrypt")
 
 exports.signup = async (req, res) => {
   try {
@@ -22,7 +23,7 @@ exports.signup = async (req, res) => {
             message: "user already exist",
           });
         }
-        const hash = await bcypt.hash(password, 10);
+        const hash = await bcrypt.hash(password, 10);
         con.query(
           "INSERT INTO user (fullname,email,phone,password) values (?,?,?,?)",
           [fullname, email, phn, hash],

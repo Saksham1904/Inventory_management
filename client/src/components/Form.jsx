@@ -1,80 +1,53 @@
 import React from "react";
 import { useState } from "react";
-import { endpoint } from "../services/api";
-import { apiconnector } from "../services/apiconnector";
-import { login, send } from "../services/operation";
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import toast from "react-hot-toast";
-import { setcategory, setloading, settoken } from "../slices/product";
+
+import Login from "./Login";
+import Signup from "./Signup";
 
 const Form = () => {
-  const [data, setdata] = useState({ email: "", password: "" });
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const changehandler = (event) => {
-    setdata((predata) => {
-      return {
-        ...predata,
-        [event.target.name]: event.target.value,
-      };
-    });
-  };
+  const [field, setField] = useState("Login");
 
-  const sumbithandler = async (event) => {
-    event.preventDefault();
-    const { LOGIN_API } = endpoint;
-    const toastId = toast.loading("Loading...");
-    dispatch(setloading(true));
-    try {
-      const response = await apiconnector("GET", LOGIN_API, null, null, {
-        email: data.email,
-        password: data.password,
-      });
+  const tabData = [
+    {
+      id: 1,
+      tabName: "Login",
+    },
+    {
+      id: 2,
+      tabName: "Signup",
+    },
+  ];
 
-      console.log("LOGIN API RESPONSE............", response);
-
-      if (!response.data.success) {
-        throw new Error(response.data.message);
-      }
-
-      toast.success("Login Successful");
-      dispatch(settoken(response.data.jsontoken));
-
-      localStorage.setItem("token", JSON.stringify(response.data.jsontoken));
-      localStorage.setItem("user", JSON.stringify(response.data.result));
-    } catch (error) {
-      console.log("LOGIN API ERROR............", error);
-      toast.error("Login Failed");
-    }
-    dispatch(setloading(false));
-    toast.dismiss(toastId);
-
-    console.log(data);
-    setdata({ email: "", password: "" });
-    navigate("/dashboard");
-  };
   return (
-    //value is added to maintain state of particular variable as change in usestate lead to rerender the jsx code
-    <div>
-      <form onSubmit={sumbithandler}>
-        <input
-          type="text"
-          placeholder="email"
-          name="email"
-          onChange={changehandler}
-          value={data.email}
-        ></input>
-        <input
-          type="password"
-          placeholder="password"
-          name="password"
-          onChange={changehandler}
-          value={data.password}
-        ></input>
-
-        <button>Sumbit</button>
-      </form>
+    
+    <div className="bg-salylite">
+      <div className="flex justify-center items-center h-screen flex-col">
+        <div className="bg-white w-[511px] h-[419px] rounded-[12px] shadow-md">
+          <div className="mt-8 mb-16 ml-[206px] text-4xl font-outfit font-bold text-dgreen">
+            <div
+              style={{
+                boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
+              }}
+              className="flex bg-grey p-1 gap-x-1 my-6 rounded-full max-w-max"
+            >
+              {tabData.map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setField(tab.tabName)}
+                  className={`${
+                    field === tab.tabName
+                      ? "bg-slate-600 text-white"
+                      : "bg-transparent text-black"
+                  } py-2 px-5 rounded-full transition-all duration-200`}
+                >
+                  {tab?.tabName}
+                </button>
+              ))}
+            </div>
+          </div>
+          {field == "Login" ? <Login /> : <Signup />}
+        </div>
+      </div>
     </div>
   );
 };

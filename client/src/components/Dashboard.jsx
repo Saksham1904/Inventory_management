@@ -77,11 +77,11 @@ const Dashboard = () => {
         id="category"
         onChange={changehandler}
       >
-        {data.map((item, index) => (
+        {(data.length==0)?null:(data.map((item, index) => (
           <option key={index} value={item.name}>
             {item.name}
           </option>
-        ))}
+        )))}
       </select>
       <button
         onClick={() => {
