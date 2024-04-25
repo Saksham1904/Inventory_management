@@ -44,3 +44,28 @@ exports.signup = async (req, res) => {
     });
   }
 };
+
+
+exports.bill=async(req,res)=>{
+
+     const send=req.body
+      console.log(send)
+      const sql = 'INSERT INTO detail (name, quantity) VALUES ?';
+     const values = send[0].map(item => [item.productName, item.quantity]);
+     console.log(values)
+     con.query(sql, [values], (err, result) => {
+      if (err) {
+        console.error('Error inserting order data:', err);
+       
+      }
+      console.log('Order data inserted successfully:', result);
+      return res.status(200).json({
+        success:true,
+        message:"passed"
+       })
+  
+   });
+       
+  };
+    
+

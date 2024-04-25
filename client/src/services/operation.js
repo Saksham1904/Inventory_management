@@ -63,7 +63,6 @@ export async function productadd(name, category, discount, price, quantity, des,
   }
   toast.dismiss(toastId)
 
-
 }
 
 
