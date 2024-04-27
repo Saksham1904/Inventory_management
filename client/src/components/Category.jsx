@@ -1,22 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import Sidescroll from './Sidescroll'
-import { deletesales, getsales } from '../services/operations2';
+import {  deletecategory, getcategorydata } from '../services/operations2';
 
 
 
-const Sales = () => {
+const Category = () => {
     const[refresh,setrefresh]=useState(true)
     const heading = [
-        { key: "name", label: "Name" },
-        { key: "price", label: "Quantity" },
-        { key: "description", label: "Total PRICE" },
-        { key: "quantity", label: "DATE" },
-       
+        { key: "name", label: "CATEGORY NAME" },
+        { key: "price", label: "TOTAL PRODUCT" },
+      
       ];
       const [data,setdata]=useState(null)
       useEffect(()=>{
             async function fetch(){
-                const res=await getsales()
+                const res=await getcategorydata()
                 console.log(res)
                 setdata(res)
             }
@@ -27,7 +25,7 @@ const Sales = () => {
            
       },[refresh])
       const handleclick=async(id)=>{
-           await  deletesales(id)
+           await deletecategory(id)
            setrefresh(true)
       }
      
@@ -66,36 +64,24 @@ const Sales = () => {
                   {(data==null)?null:data.map((data) => (
                     <tr>
                       <td className="px-6 py-4 whitespace-wrap">
-                        <div className="flex items-center">
-                          <div className="flex-shrink-0 h-10 w-10">
-                            <img
-                              className="h-10 w-10 rounded-full"
-                              src={data.image}
-                              alt=""
-                            />
-                          </div>
+                        
                           <div className="ml-4">
                             <div className="text-sm font-medium text-gray-900">
-                              {data.name}
-                            </div>
+                              {data.category_name}
+                        
                           </div>
                         </div>
                       </td>
 
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {data.quantity}
+                        {data.total_products}
                       </td>
-                      <td className="px-6 py-4 whitespace-wrap text-sm text-gray-500">
-                        {data.totalprice}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {data.date}
-                      </td>
+                    
                       
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                         <button
                           onClick={() => {
-                            handleclick(data.id);
+                            handleclick(data.category_id);
                           }}
                         >
                           DELETE
@@ -109,14 +95,11 @@ const Sales = () => {
           </div>
         </div>
       </div>
-
-
-
-      
+      </div> 
+</div>
         </div>
-        </div>
-    </div>
+   
   )
 }
 
-export default Sales
+export default Category

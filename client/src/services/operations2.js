@@ -43,3 +43,27 @@ export async function deletesales(id) {
 }
 
 
+export async function getcategorydata() {
+    const { GETCATEGORYDATA_API } = endpoint;
+  
+    try {
+      const response = await apiconnector("GET", GETCATEGORYDATA_API);
+      
+      return (response?.data.result);
+    } catch (error) {
+      console.log("DATA NOT ADDED ERROR............", error);
+    }
+  }
+  
+  
+export async function deletecategory(id) {
+    const { DELETECATEGORY_API } = endpoint;
+    
+  
+    try {
+      const response = await apiconnector("DELETE", DELETECATEGORY_API,{id});
+      console.log(response);
+    } catch (error) {
+      console.log("DATA NOT ADDED ERROR............", error);
+    }
+  }

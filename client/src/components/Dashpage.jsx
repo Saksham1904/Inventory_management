@@ -18,7 +18,7 @@ const Dashpage = () => {
 
   async function fetch() {
     const res = await categorydata();
-    dispatch(setcategory(res));
+    dispatch(setcategory(res));  
     setcat(res);
   }
   //call for total category

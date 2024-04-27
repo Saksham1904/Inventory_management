@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { endpoint } from "../services/api";
 import { apiconnector } from "../services/apiconnector";
 import { storage } from "../firebase";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import product from "../slices/product";
-import { productadd } from "../services/operation";
+import { categorydata, productadd } from "../services/operation";
 import { useSelector } from "react-redux";
+import { getcategorydata } from "../services/operations2";
 
 const ADD = () => {
   const { token }= useSelector((state) => state.product);
+  const[category,setcategory]=useState(null)
   const [data, setdata] = useState({
     name: "",
     des: "",
@@ -21,7 +23,14 @@ const ADD = () => {
   });
 
   const [imageUpload, setImageUpload] = useState(null);
-  const { category } = useSelector((state) => state.product);
+    useEffect(()=>{
+      async function fetch(){
+        const res=await categorydata()
+        console.log(res)
+        setcategory(res)
+      }
+fetch()
+    },[])
 
  
 
@@ -73,6 +82,9 @@ const ADD = () => {
 
   return (
     <div>
+      {
+       
+      }
       <form onSubmit={sumbithandler}>
         <input
           required
@@ -119,8 +131,8 @@ const ADD = () => {
         id="category"
         onChange={changehandler}
       >
-        {(category.length==0)?null:(category.map((item, index) => (
-          <option key={index} value={item.name}>
+        {(category==null)?null:(category.map((item, index) => (
+          <option key={index} value={item.id}>
             {item.name}
           </option>
         )))}

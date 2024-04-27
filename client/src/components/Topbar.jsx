@@ -36,7 +36,7 @@ const Topbar = (props) => {
                 onChange={changehandler}
             >
                 {(category==null)?null:category.map((item, index) => (
-                <option key={index} value={item.name}>
+                <option key={index} value={item.id}>
                     {item.name}
                 </option>
                 ))}

@@ -18,25 +18,25 @@ function Sidescroll() {
       <div className="sidebar-menu text-white font-outfit font-medium text-base">
         <ul className='flex flex-col'>
           <li className='rounded-lg hover:bg-lgreen active:bg-bluee h-14 w-[280px] py-4'>
-            <Link to="/Dashboard" className='ml-10 flex flex-row gap-4'>
+            <Link to="/dashboard" className='ml-10 flex flex-row gap-4'>
               <img src={dashboardIcon} alt="Dashboard" />
               <p>Dashboard</p>
             </Link>
           </li>
           <li className='rounded-lg hover:bg-lgreen active:bg-bluee h-14 w-[280px] py-4'>
-            <Link to="/Products" className='ml-10 flex flex-row gap-4'>
+            <Link to="/dashboard/add" className='ml-10 flex flex-row gap-4'>
               <img src={productsIcon} alt="Products" /> 
               <p>Products</p>
             </Link>
           </li>
           <li className='rounded-lg hover:bg-lgreen active:bg-bluee h-14 w-[280px] py-4'>
-            <Link to="/categories" className='ml-10 flex flex-row gap-4'>
+            <Link to="/dashboard/category" className='ml-10 flex flex-row gap-4'>
               <img src={categoriesIcon} alt="Categories" />
               <p>Categories</p>
             </Link>
           </li>
           <li className='rounded-lg hover:bg-lgreen active:bg-bluee h-14 w-[280px] py-4'>
-            <Link to="/Sales" className='ml-10 flex flex-row gap-4'>
+            <Link to="/dashboard/sale" className='ml-10 flex flex-row gap-4'>
               <img src={salesIcon} alt="Sales" /> 
               <p>Sales</p>
             </Link>
