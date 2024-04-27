@@ -3,7 +3,7 @@
 import { endpoint } from "./api"
 import { apiconnector } from "./apiconnector";
 import { toast } from "react-hot-toast"
-import { setloading,settoken } from "../slices/product";
+
 export async function categorydata(){
 
   const { CATEGORY_API } = endpoint;
@@ -85,5 +85,24 @@ export async function addcategory(category){
 }
 
 
+export async function deleteproduct(id){
+  const {  DELETEPRODUCT_API } = endpoint
+  const toastId = toast.loading("Loading...")
 
+   try {
+   
+  const   response = await apiconnector("DELETE", DELETEPRODUCT_API, {id})
+    console.log(response)
+    toast.success("PRODUCT DELETED")
+    
+  } catch (error) {
+    console.log("DATA NOT DELETED ERROR............", error)
+    toast.error(error.message)
+    toast.dismiss(toastId)
+    return false
+  }
+  toast.dismiss(toastId)
+  return true
+
+}
 

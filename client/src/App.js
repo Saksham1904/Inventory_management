@@ -8,14 +8,30 @@ import { useEffect } from 'react';
 import Form from "./components/Form"
 import { BrowserRouter,Route,Routes } from 'react-router-dom';
 import PrivateRoute from './components/PrivateRoute';
+import Dashpage from './components/Dashpage';
+import Popup from "./components/Popup"
+import { useState } from 'react';
+import Sales from './components/Sales';
 
 
 function App() {
+  
   return (
     <div className="App">
+
+<div className="container mx-auto">
+
+
+    </div>
+
+
+
+
+
+
       {/* app */}
     
-      <Routes>
+      {/* <Routes>
         <Route path='/login' element={<Form/>}/>
       
         <Route 
@@ -44,10 +60,9 @@ element={
          
          </Routes>
        
-      
-    
+       */}
+<Sales/>
 
-<Dashboard/>
     </div>
   );
 }

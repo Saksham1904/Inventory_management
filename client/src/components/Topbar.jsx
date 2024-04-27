@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
 
-const Topbar = () => {
+const Topbar = (props) => {
     const { category }= useSelector((state) => state.product);
-    const [form,setform] = useState({ search: "", category: "" });
+    
+
     const changehandler = (event) => {
-        setform((predata) => {
+        props.setform((predata) => {
           return {
             ...predata,
             [event.target.name]: event.target.value,
@@ -21,7 +22,8 @@ const Topbar = () => {
                 onChange={changehandler}
                 type="text"
                 name="search"
-                placeholder="Search product, category, sale"
+                placeholder="Search product"
+                value={props.form.search}
                 className='font-outfit text-base text-dgreen opacity-[61.8%]'
             ></input>
 
@@ -29,20 +31,20 @@ const Topbar = () => {
 
             <select
                 name="category"
-                value={form.category}
+                value={props.form.category}
                 id="category"
                 onChange={changehandler}
             >
-                {/* {data.map((item, index) => (
+                {(category==null)?null:category.map((item, index) => (
                 <option key={index} value={item.name}>
                     {item.name}
                 </option>
-                ))} */}
+                ))}
             </select>
             <button
-                // onClick={() => {
-                //   setbuttonclick(true);
-                // }}
+                onClick={() => {
+                  props.setbuttonclick(true);
+                }}
                 className='font-outfit text-base font-medium text-white bg-bluee rounded-full py-[10px] px-4'
             >
                 Show

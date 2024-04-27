@@ -16,16 +16,10 @@ const Dashboard = () => {
 
   const navigate = useNavigate();
 
-  async function fetch() {
-    const res = await categorydata();
-    setdata(res);
-    dispatch(setcategory(res));
-  }
+  
 
-  useEffect(() => {
-    fetch();
-  }, []);
 
+  
   useEffect(() => {
     if (refresh) {
       setrefresh(false);
@@ -33,16 +27,7 @@ const Dashboard = () => {
     }
   }, [refresh]);
 
-  useEffect(() => {
-    const fetch = async () => {
-      const response = await productdata(form.search, form.category);
-      setproduct(response);
-    };
-    if (buttonclick) {
-      setbuttonclick(false);
-      fetch();
-    }
-  }, [buttonclick]);
+ 
 
   const changehandler = (event) => {
     setform((predata) => {
@@ -64,32 +49,7 @@ const Dashboard = () => {
   return (
     <div className="bg-steelwhite">
       Dashboard
-      <input
-        onChange={changehandler}
-        type="text"
-        name="search"
-        placeholder="search"
-      ></input>
-      <label htmlFor="category">SELECT CATEGORY</label>
-      <select
-        name="category"
-        value={form.category}
-        id="category"
-        onChange={changehandler}
-      >
-        {(data.length==0)?null:(data.map((item, index) => (
-          <option key={index} value={item.name}>
-            {item.name}
-          </option>
-        )))}
-      </select>
-      <button
-        onClick={() => {
-          setbuttonclick(true);
-        }}
-      >
-        SHOW PRODUCT
-      </button>
+    
       
       <div>
         <button
