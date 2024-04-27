@@ -4,6 +4,7 @@ import ADD from "./components/ADD"
 import Dashboard from './components/Dashboard';
 import Sidescroll from "./components/Sidescroll";
 import Topbar from './components/Topbar';
+// import Addproduct from './components/Addproduct';
 import { useEffect } from 'react';
 import Form from "./components/Form"
 import { BrowserRouter,Route,Routes } from 'react-router-dom';
@@ -14,7 +15,7 @@ function App() {
   return (
     <div className="App">
       {/* app */}
-    
+{/*     
       <Routes>
         <Route path='/login' element={<Form/>}/>
       
@@ -42,12 +43,12 @@ element={
        <Route path="/dashboard/add" element={<ADD />} />
           </Route>
          
-         </Routes>
+         </Routes> */}
        
       
     
 
-<Dashboard/>
+<ADD/>
     </div>
   );
 }

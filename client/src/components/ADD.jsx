@@ -7,6 +7,8 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import product from "../slices/product";
 import { productadd } from "../services/operation";
 import { useSelector } from "react-redux";
+import Sidescroll from "./Sidescroll";
+import Topbar from "./Topbar";
 
 const ADD = () => {
   const { token }= useSelector((state) => state.product);
@@ -73,6 +75,8 @@ const ADD = () => {
 
   return (
     <div>
+      <Sidescroll/>
+      <Topbar/>
       <form onSubmit={sumbithandler}>
         <input
           required
@@ -119,7 +123,7 @@ const ADD = () => {
         id="category"
         onChange={changehandler}
       >
-        {(category.length==0)?null:(category.map((item, index) => (
+        {(category==null)?null:(category.map((item, index) => (
           <option key={index} value={item.name}>
             {item.name}
           </option>
