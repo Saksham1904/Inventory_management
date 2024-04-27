@@ -62,7 +62,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div>
+    <div className="bg-steelwhite">
       Dashboard
       <input
         onChange={changehandler}
@@ -90,6 +90,7 @@ const Dashboard = () => {
       >
         SHOW PRODUCT
       </button>
+      
       <div>
         <button
           onClick={() => {

@@ -9,7 +9,9 @@ module.exports = {
         bluee: '#01AFF6',
         dbluee: '#0192CB', 
         dgreen: '#054753',
+        lgreen: '#076374',
         grey: '#EDEDED',
+        steelwhite: '#F0F2F6',
       },
       fontFamily: {
         outfit: ['Outfit', 'sans-serif'],
