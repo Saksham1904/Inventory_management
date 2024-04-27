@@ -10,7 +10,7 @@ import Table from "./Table";
 
 const Dashpage = () => {
   const [buttonclick, setbuttonclick] = useState(true);
-  const dispatch = useDispatch();
+const dispatch=useDispatch()
   const [category, setcat] = useState([]);
   const [form, setform] = useState({ search: "", category: "" });
   const [product, setproduct] = useState([]);

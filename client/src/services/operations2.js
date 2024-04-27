@@ -67,3 +67,11 @@ export async function deletecategory(id) {
       console.log("DATA NOT ADDED ERROR............", error);
     }
   }
+
+
+  export function logout(){
+    
+    localStorage.removeItem("token")
+    localStorage.removeItem("user")
+  
+  }
