@@ -4,12 +4,13 @@ const con=require("../database/database")
 
 exports.addinvt=async(req,res)=>{
     try{
-    const{name,price,des,category,discount,quantity}=req.body;
+    const{name,price,des,category,discount,quantity,image}=req.body;
     const {userid}=req.user
     console.log(userid)
-    const product=[name, price, quantity, discount, des, category,userid]
+    const product=[name, price, quantity, discount, des, category,userid,image]
+    console.log(product)
 
-    con.query("INSERT INTO product(name, price, quantity, discount, description, category,userid) values (?)",[product],(error,result)=>{
+    con.query("INSERT INTO product(name, price, quantity, discount, description, category,userid,image) values (?)",[product],(error,result)=>{
         if(error) throw error;
         console.log(result)
         res.status(200).json({

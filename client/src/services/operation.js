@@ -48,13 +48,14 @@ export async function productdata(name, category) {
 }
 
 
-export async function productadd(name, category, discount, price, quantity, des,image) {
+export async function productadd(name, category, discount, price, quantity, des,image,token) {
   
   const { ADDINVT_API } = endpoint
   const toastId = toast.loading("Loading...")
-  console.log(image)
-  try {
-    const response = await apiconnector("POST", ADDINVT_API, { name, category, discount, price, quantity, des,image})
+   try {
+    const response = await apiconnector("POST", ADDINVT_API, { name, category, discount, price, quantity, des,image,token}, {
+      Authorization: `Bearer ${token}`,
+    })
     console.log(response)
     toast.success("PRODUCT ADDED")
   } catch (error) {
@@ -62,7 +63,6 @@ export async function productadd(name, category, discount, price, quantity, des,
     toast.error(error.message)
   }
   toast.dismiss(toastId)
-
 
 }
 
@@ -87,36 +87,3 @@ export async function addcategory(category){
 
 
 
-// export const login=async(email,password,navigate)=>{
-//   return async (dispatch) => {
-//     const {LOGIN_API}=endpoint
-//     const toastId = toast.loading("Loading...")
-//     dispatch(setloading(true))
-//     try {
-//       const response = await apiconnector("GET", LOGIN_API, null,null,{
-//         email:email,
-//         password:password,
-//       })
-
-//       console.log("LOGIN API RESPONSE............", response)
-
-//       if (!response.data.success) {
-//         throw new Error(response.data.message)
-//       }
-
-//       toast.success("Login Successful")
-//       dispatch(settoken(response.data.token))
-      
-     
-      
-//       localStorage.setItem("token", JSON.stringify(response.data.token))
-//       localStorage.setItem("user", JSON.stringify(response.data.user))
-//       navigate("/dashboard")
-//     } catch (error) {
-//       console.log("LOGIN API ERROR............", error)
-//       toast.error("Login Failed")
-//     }
-//     dispatch(setloading(false))
-//     toast.dismiss(toastId)
-//   }
-// }

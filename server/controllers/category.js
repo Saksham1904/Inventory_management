@@ -47,6 +47,10 @@ exports.getallcategory=async(req,res)=>{
 exports.deletecategory=async(req,res)=>{
   try{
     const {name}=req.body
+   con.query("delete from product where category=?",[name],(error,result)=>{
+    if(error) throw error
+    console.log(result)    
+    })
     con.query("DELETE FROM category WHERE name = ?",[name],(error,result)=>{
       if(error) throw error
       console.log(result)

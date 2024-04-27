@@ -9,6 +9,7 @@ import { productadd } from "../services/operation";
 import { useSelector } from "react-redux";
 
 const ADD = () => {
+  const { token }= useSelector((state) => state.product);
   const [data, setdata] = useState({
     name: "",
     des: "",
@@ -48,7 +49,7 @@ const ADD = () => {
       data.price,
       data.quantity,
       data.des,
-      image
+      image,token
     );
     setdata({
       name: "",
@@ -111,14 +112,19 @@ const ADD = () => {
           name="imageupload"
           onChange={(event)=>{setImageUpload(event.target.files[0])}}
         />
-        <input
-          required
-          type="text"
-          placeholder="CATEGORY"
-          name="category"
-          value={data.category}
-          onChange={changehandler}
-        />
+       <label htmlFor="category">SELECT CATEGORY</label>
+      <select
+        name="category"
+        value={data.category}
+        id="category"
+        onChange={changehandler}
+      >
+        {(category.length==0)?null:(category.map((item, index) => (
+          <option key={index} value={item.name}>
+            {item.name}
+          </option>
+        )))}
+      </select>
         <input
           required
           type="text"

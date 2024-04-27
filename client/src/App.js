@@ -11,13 +11,11 @@ import PrivateRoute from './components/PrivateRoute';
 
 
 function App() {
-  
-  
   return (
     <div className="App">
       {/* app */}
     
-      {/* <Routes>
+      <Routes>
         <Route path='/login' element={<Form/>}/>
       
         <Route 
@@ -47,9 +45,9 @@ element={
          </Routes>
        
       
-    */}
+    
 
-<Topbar/>
+<Dashboard/>
     </div>
   );
 }
