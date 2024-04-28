@@ -3,15 +3,16 @@ import './App.css';
 import ADD from "./components/ADD"
 import Dashboard from './components/Dashboard';
 import Sidescroll from "./components/Sidescroll";
-import Topbar from './components/Topbar';
-// import Addproduct from './components/Addproduct';
+// import Topbar from './components/Topbar';
+import Addcategory from "./components/Addcategory";
 import { useEffect } from 'react';
 import Form from "./components/Form"
 import { BrowserRouter,Route,Routes } from 'react-router-dom';
 import PrivateRoute from './components/PrivateRoute';
-import Dashpage from './components/Dashpage';
-import Popup from "./components/Popup"
+// import Dashpage from './components/Dashpage';
+// import Popup from "./components/Popup"
 import { useState } from 'react';
+import Dashpage from './components/Dashpage';
 import Sales from './components/Sales';
 
 
@@ -59,12 +60,11 @@ element={
        <Route path="/dashboard/add" element={<ADD />} />
           </Route>
          
-         </Routes> */}
+         </Routes>
        
-      
-    
+       */}
+<Sales/>
 
-<Dashboard/>
     </div>
   );
 }

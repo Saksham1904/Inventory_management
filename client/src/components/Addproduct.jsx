@@ -47,8 +47,11 @@ import React from 'react'
 
 const Addproduct = () => {
   return (
-    <div>Addproduct</div>
+      <div>
+        ahlal
+      </div>
   )
 }
+
 
 export default Addproduct
