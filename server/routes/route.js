@@ -10,6 +10,7 @@ const {deleteproduct}=require("../controllers/invtadd")
 const { signup, bill } = require("../controllers/signup")
 const {auth}=require("../middlewares/auth")
 const { getsale, deletesale, addsale } = require("../controllers/sales")
+const { product, sale, category } = require("../controllers/dashboard")
 
 router.get("/login",login)
 router.post("/signup",signup)
@@ -32,6 +33,11 @@ router.delete("/deletesales",deletesale)
 router.post("/addsales",addsale)
 
 router.get("/productcategory",getcategorydata)
+
+
+router.get("/totalproduct",product)
+router.get("/totalsale",sale)
+router.get("/totalcategory",category)
 
 module.exports=router
 

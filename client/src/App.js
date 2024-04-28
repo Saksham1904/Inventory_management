@@ -1,13 +1,21 @@
-import "./App.css";
-import ADD from "./components/ADD";
 
-import Form from "./components/Form";
-import { Route, Routes } from "react-router-dom";
-import PrivateRoute from "./components/PrivateRoute";
-import Dashpage from "./components/Dashpage";
+import './App.css';
+import ADD from "./components/ADD"
 
-import Sales from "./components/Sales";
-import Category from "./components/Category";
+import Sidescroll from "./components/Sidescroll";
+import Topbar from './components/Topbar';
+import { useEffect } from 'react';
+import Form from "./components/Form"
+import { BrowserRouter,Route,Routes } from 'react-router-dom';
+import PrivateRoute from './components/PrivateRoute';
+import Dashpage from './components/Dashpage';
+import Popup from "./components/Popup"
+import { useState } from 'react';
+import Sales from './components/Sales';
+import Category from './components/Category';
+import Addcategory from './components/Addcategory';
+
+
 
 function App() {
   return (
@@ -56,7 +64,8 @@ function App() {
           <Route path="/dashboard/sale" element={<Sales />} />
         </Route>
       </Routes>
-     
+      
+   
     </div>
 
    

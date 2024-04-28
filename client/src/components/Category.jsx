@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Sidescroll from './Sidescroll'
 import {  deletecategory, getcategorydata } from '../services/operations2';
 import Deleteprompt from './Deletionprompt';
+import Addcategory from './Addcategory';
 
 
 
@@ -36,14 +37,16 @@ const Category = () => {
       }
      
   return (
-    <div>
-        <div className="flex">
-      <div className="w-1/2 ">
-        
-        <Sidescroll />
-      </div>
-      <div className="w-1/9 ">
-      <div className="flex flex-col">
+    <div className="flex">
+    <Sidescroll />
+    <div className="w-3/4 p-4">
+      <Addcategory setrefresh={setrefresh}/>
+    
+    
+  
+
+       
+       <div className="flex flex-col">
         <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
             <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -102,11 +105,10 @@ const Category = () => {
               </table>
             </div>
           </div>
-        </div>
-      </div>
+        </div> 
       </div> 
-</div>
-        </div>
+     </div>
+     </div>
    
   )
 }

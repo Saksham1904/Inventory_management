@@ -34,6 +34,7 @@ const Table = (props) => {
   //function call for sale table
     await addsales(sale.name, sale.id,currquantity,value, totalprice, date.toDateString());
     setsale(sale.quantity=currquantity)
+    props.setnewdata(true)
   };
 
   async function handleclick(id) {
@@ -41,7 +42,9 @@ const Table = (props) => {
 
     const res = await deleteproduct(id);
     if (res) {
+
       props.setproduct(data.filter((product) => product.id !== id));
+      props.setnewdata(true)
     }
   }
   return (
