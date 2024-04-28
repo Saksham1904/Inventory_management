@@ -15,7 +15,7 @@ import { faPiggyBank } from "@fortawesome/free-solid-svg-icons";
 
 const Dashpage = () => {
   const [buttonclick, setbuttonclick] = useState(true);
-  const dispatch = useDispatch();
+const dispatch=useDispatch()
   const [category, setcat] = useState([]);
   const [form, setform] = useState({ search: "", category: "" });
   const [product, setproduct] = useState([]);
@@ -23,7 +23,7 @@ const Dashpage = () => {
 
   async function fetch() {
     const res = await categorydata();
-    dispatch(setcategory(res));
+    dispatch(setcategory(res));  
     setcat(res);
   }
   //call for total category

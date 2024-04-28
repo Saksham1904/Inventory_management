@@ -26,7 +26,7 @@ exports.addcategory=async(req,res)=>{
 
 exports.getallcategory=async(req,res)=>{
   try{
-      con.query("SELECT name FROM category",(error,result)=>{
+      con.query("SELECT * FROM category",(error,result)=>{
         if(error) throw error
         console.log(result)
         res.status(200).json({
@@ -46,12 +46,9 @@ exports.getallcategory=async(req,res)=>{
 
 exports.deletecategory=async(req,res)=>{
   try{
-    const {name}=req.body
-   con.query("delete from product where category=?",[name],(error,result)=>{
-    if(error) throw error
-    console.log(result)    
-    })
-    con.query("DELETE FROM category WHERE name = ?",[name],(error,result)=>{
+    const {id}=req.body
+  
+    con.query("DELETE FROM category WHERE id = ?",[id],(error,result)=>{
       if(error) throw error
       console.log(result)
       res.status(200).json({
@@ -72,18 +69,21 @@ exports.deletecategory=async(req,res)=>{
 
 exports.searchproduct=async(req,res)=>{
   try{
+
+
+    
     const { category, name } = req.query;
-  let sql = 'SELECT * FROM product WHERE 1=1'; // Always true condition to start the WHERE clause
+  let sql = 'SELECT product.*,category.name AS category_name FROM product INNER JOIN category ON product.cid = category.id where 1=1'; // Always true condition to start the WHERE clause
 
   const values = [];
 
   if (category) {
-    sql += ' AND Category = ?';
+    sql += ' AND product.cid = ?';
     values.push(category);
   }
 
   if (name) {
-    sql += ' AND Name LIKE ?';
+    sql += ' AND product.name LIKE ?';
     values.push(`%${name}%`);
   }
   con.query(sql,values,(error,result)=>{
@@ -102,4 +102,24 @@ catch(error){
   })
 }
 }
+
+exports.getcategorydata=async(req,res)=>{
+  try{
+    con.query("SELECT category.name AS category_name,COUNT(product.id) AS total_products,category.id as category_id FROM category LEFT JOIN product ON category.id = product.cid GROUP BY category.id;",(error,result)=>{
+      if(error) throw error
+      res.status(200).json({
+        success:true,
+        result
+    })
+    })
+  }
+  catch(error){
+    res.status(403).json({
+      success:false,
+      message:"category data cant fetch"
+    })
+  }
+}
+
+
 

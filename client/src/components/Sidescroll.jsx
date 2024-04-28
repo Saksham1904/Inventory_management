@@ -10,10 +10,20 @@ import { faBox } from '@fortawesome/free-solid-svg-icons';
 import { faLayerGroup } from "@fortawesome/free-solid-svg-icons";
 import { faPiggyBank } from "@fortawesome/free-solid-svg-icons";
 import { faHouse } from '@fortawesome/free-solid-svg-icons';
-import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';import { logout } from '../services/operations2';
+import { useDispatch } from 'react-redux';
+import { settoken } from '../slices/product';
+
 
 
 function Sidescroll() {
+  const dispatch=useDispatch()
+const handleclick=()=>{
+  logout()
+  dispatch(settoken(null))
+}
+
+
   return (
     <div className="sidebar h-screen w-[280px] bg-dgreen rounded-r-[10px]">
       <div className="sidebar-header text-white py-6 pl-9 font-outfit font-bold text-2xl bg-lgreen w-[280px]">
@@ -47,9 +57,10 @@ function Sidescroll() {
             </Link>
           </li>
           <li className='rounded-lg hover:bg-lgreen active:bg-bluee h-14 w-[280px] py-4 mt-[374px]'>
-            <Link to="/Logout" className='ml-10 flex flex-row gap-4 items-center'>
+            <Link to="/login" className='ml-10 flex flex-row gap-4 items-center'>
+             
               <FontAwesomeIcon icon={faRightFromBracket} className='text-white h-5 w-5'/>
-              <p>Log Out</p>
+              <button onClick={handleclick}>LOGOUT</button>
             </Link>
           </li>
         </ul>

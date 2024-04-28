@@ -123,7 +123,7 @@ const Table = (props) => {
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                         <button
                           onClick={() => {
-                            handleclick(data.id);
+                            handleclick(data.category);
                           }}
                         >
                           DELETE

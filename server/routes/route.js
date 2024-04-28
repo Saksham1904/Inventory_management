@@ -2,7 +2,7 @@ const express = require("express")
 const router = express.Router()
 
 const {addinvt, updateproduct}=require("../controllers/invtadd")
-const {addcategory, deletecategory}=require("../controllers/category")
+const {addcategory, deletecategory, getcategorydata}=require("../controllers/category")
 const{getallcategory}=require("../controllers/category")
 const {searchproduct}=require("../controllers/category")
 const {login}=require("../controllers/login")
@@ -31,7 +31,7 @@ router.get("/getsales",getsale)
 router.delete("/deletesales",deletesale)
 router.post("/addsales",addsale)
 
-
+router.get("/productcategory",getcategorydata)
 
 module.exports=router
 
