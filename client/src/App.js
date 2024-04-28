@@ -1,7 +1,7 @@
 
 import './App.css';
 import ADD from "./components/ADD"
-import Dashboard from './components/Dashboard';
+// import Dashboard from './components/Dashboard';
 import Sidescroll from "./components/Sidescroll";
 import Topbar from './components/Topbar';
 import { useEffect } from 'react';
@@ -12,6 +12,7 @@ import Dashpage from './components/Dashpage';
 import Popup from "./components/Popup"
 import { useState } from 'react';
 import Sales from './components/Sales';
+import Category from './components/Category';
 
 
 function App() {
@@ -61,6 +62,8 @@ function App() {
           <Route path="/dashboard/sale" element={<Sales />} />
         </Route>
       </Routes>
+
+      <Category/>
      
     </div>
 
