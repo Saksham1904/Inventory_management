@@ -2,9 +2,13 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
 
 const Topbar = (props) => {
-    const { category }= useSelector((state) => state.product);
     
-
+   
+   
+   const  { category }= useSelector((state) => state.product);
+   
+  
+   
     const changehandler = (event) => {
         props.setform((predata) => {
           return {

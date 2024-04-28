@@ -52,7 +52,7 @@ exports.deleteproduct=async(req,res)=>{
 
     }
     catch(error){
-        res.status(403).json({
+        res.status(400).json({
             success:false,
             message:"PRODUCT NOT DELETED...."
         })

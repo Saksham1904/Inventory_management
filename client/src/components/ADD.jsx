@@ -1,13 +1,12 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { endpoint } from "../services/api";
-import { apiconnector } from "../services/apiconnector";
+
 import { storage } from "../firebase";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import product from "../slices/product";
+
 import { categorydata, productadd } from "../services/operation";
 import { useSelector } from "react-redux";
-import { getcategorydata } from "../services/operations2";
+
 
 const ADD = () => {
   const { token }= useSelector((state) => state.product);
@@ -68,7 +67,7 @@ fetch()
       discount: "",
       quantity: "",
     });
-    setImageUpload("")
+    setImageUpload(null)
   };
 
   const changehandler = (event) => {

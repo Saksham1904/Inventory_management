@@ -67,7 +67,7 @@ const Login = () => {
         <form onSubmit={sumbithandler} className="bg-white w-[511px] h-[419px] rounded-[12px] shadow-md">
         <div className="mt-8 mb-16 ml-[206px] text-4xl font-outfit font-bold text-dgreen"></div>
         <div>
-          <input
+          <input required
             type="text"
             placeholder="email"
             name="email"
@@ -77,7 +77,7 @@ const Login = () => {
           ></input>
           </div>
           <div>
-          <input
+          <input required
             type="password"
             placeholder="password"
             name="password"

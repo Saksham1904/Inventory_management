@@ -5,7 +5,7 @@ import productsIcon from '../assets/Products.png';
 import salesIcon from '../assets/Sales.png';
 import dashboardIcon from '../assets/Home.png';
 import logoutIcon from '../assets/Logout.png';
-import { logout } from '../services/operations2';
+
 import { useDispatch } from 'react-redux';
 import { settoken } from '../slices/product';
 
@@ -14,7 +14,10 @@ import { settoken } from '../slices/product';
 function Sidescroll() {
   const dispatch=useDispatch()
 const handleclick=()=>{
-  logout()
+  
+  localStorage.clear()
+  localStorage.removeItem("token")
+  localStorage.removeItem("user")
   dispatch(settoken(null))
 }
 

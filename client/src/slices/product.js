@@ -5,7 +5,7 @@ const initialstate={
     data:null,
     loading:false,
     category:null,
-    token: localStorage.getItem("token") ? JSON.parse(localStorage.getItem("token")):null
+    token: (localStorage.getItem("token")) ? JSON.parse(localStorage.getItem("token")) : null,
 }
 
 const productSlice=createSlice({

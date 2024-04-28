@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import Sidescroll from './Sidescroll'
 import {  deletecategory, getcategorydata } from '../services/operations2';
+import Deleteprompt from './Deletionprompt';
 
 
 
 const Category = () => {
     const[refresh,setrefresh]=useState(true)
+    const [isModalOpen, setIsModalOpen] = useState(false);
+ const[id,setid]=useState(null)
+   
     const heading = [
         { key: "name", label: "CATEGORY NAME" },
         { key: "price", label: "TOTAL PRODUCT" },
@@ -24,7 +28,9 @@ const Category = () => {
             }
            
       },[refresh])
-      const handleclick=async(id)=>{
+
+      const handledelete=async()=>{
+           console.log(id)
            await deletecategory(id)
            setrefresh(true)
       }
@@ -81,11 +87,14 @@ const Category = () => {
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                         <button
                           onClick={() => {
-                            handleclick(data.category_id);
+                            setIsModalOpen(true)
+                            setid(data.category_id)
+                            
                           }}
                         >
                           DELETE
                         </button>
+                        <Deleteprompt isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onDelete={()=>handledelete()} />
                       </td>
                     </tr>
                   ))}

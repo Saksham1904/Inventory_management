@@ -5,13 +5,20 @@ const bcrypt=require("bcrypt")
 
 exports.signup = async (req, res) => {
   try {
-    const { fullname, email, phn, password } = req.body;
-    if (!fullname || !email || !phn || !password) {
+    const { fullname, email, phn, password ,adminpass} = req.body;
+    if (!fullname || !email || !phn || !password || !adminpass) {
       return res.status(403).send({
         success: false,
         message: "all fields not set",
       });
     }
+    if(adminpass!="Saksham"){
+       res.status(403).send({
+        success: false,
+        message: "ADMIN PASS IS NOT MATCH",
+      });
+    }
+
     con.query(
       "SELECT email from user where email=?",
       [email],
