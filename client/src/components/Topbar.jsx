@@ -6,9 +6,13 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import avatarIcon from '../assets/Avatar.png';
 
 const Topbar = (props) => {
-    const { category }= useSelector((state) => state.product);
     
-
+   
+   
+   const  { category }= useSelector((state) => state.product);
+   
+  
+   
     const changehandler = (event) => {
         props.setform((predata) => {
           return {
@@ -20,7 +24,7 @@ const Topbar = (props) => {
         
 
   return (
-    <div className="bg-white h-[80px] flex gap-4 px-8 py-4 ml-[280px]">
+    <div className="bg-white h-[80px] flex gap-4 px-8 py-4">
             <div className='w-[410px] h-[45px] flex gap-2 px-4 py-[10px] rounded-full border-solid border-2 border-dgreen border-opacity-[38.2%]'>
                 <FontAwesomeIcon icon={faSearch} className='text-dgreen opacity-[61.8%] text-sm pt-[4px]'/>
                 <input
@@ -44,9 +48,10 @@ const Topbar = (props) => {
                 >
                     <option value="" disabled selected>Select Category</option>
                     {(category==null)?null:category.map((item, index) => (
-                    <option key={index} value={item.name}>
+                    <option key={index} value={item.id}>
                         {item.name}
                     </option>
+                    
                     ))}
                 </select>
             </div>
@@ -55,7 +60,7 @@ const Topbar = (props) => {
                     onClick={() => {
                     props.setbuttonclick(true);
                     }}
-                    className='w-[110px] h-[45px] font-outfit text-base font-medium text-white bg-bluee rounded-full py-[10px] px-4'
+                    className='w-[110px] h-[45px] font-outfit text-base font-medium text-white bg-bluee rounded-full py-[10px] px-4 hover:bg-opacity-50'
                 >
                     Show
                 </button>

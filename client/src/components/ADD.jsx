@@ -1,15 +1,14 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { endpoint } from "../services/api";
-import { apiconnector } from "../services/apiconnector";
+
 import { storage } from "../firebase";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import product from "../slices/product";
+
 import { categorydata, productadd } from "../services/operation";
 import { useSelector } from "react-redux";
-import { getcategorydata } from "../services/operations2";
+
 import Sidescroll from "./Sidescroll";
-// import Topbar from "./Topbar";
+
 
 const ADD = () => {
   const { token }= useSelector((state) => state.product);
@@ -70,7 +69,7 @@ fetch()
       discount: "",
       quantity: "",
     });
-    setImageUpload("")
+    setImageUpload(null)
   };
 
   const changehandler = (event) => {
@@ -85,7 +84,7 @@ fetch()
   return (
     <div className="flex bg-steelwhite">
       <Sidescroll/>
-      {/* <Topbar/> */}
+      
       <div className="font-outfit text-dgreen relative bg-white w-[744px] h-[427px] py-6 pl-4 ml-[33px] mt-[124px] rounded-lg">
         <p className="font-semibold text-2xl">ADD NEW PRODUCT</p>
         <form onSubmit={sumbithandler} className="mt-6 text-base">
@@ -129,7 +128,7 @@ fetch()
             <option value="">Select Category</option>
 
             {(category==null)?null:(category.map((item, index) => (
-              <option key={index} value={item.name}>
+              <option key={index} value={item.id}>
                 {item.name}
               </option>
             )))}
@@ -164,7 +163,7 @@ fetch()
             className="mt-2 px-3 py-2 w-[209px] h-[46px] bg-grey rounded-2xl text-dgreen placeholder-dgreen placeholder-opacity-[61.8%] focus:outline-none focus:text-opacity-100"
           />
         </div>
-          <button className="font-medium mt-4 py-[10px] px-4 bg-bluee text-white rounded-full">Add product</button>
+          <button className="font-medium mt-4 py-[10px] px-4 bg-bluee text-white rounded-full hover:bg-opacity-50">Add product</button>
         </form>
       </div>
     </div>

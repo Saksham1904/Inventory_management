@@ -10,16 +10,21 @@ import { faBox } from '@fortawesome/free-solid-svg-icons';
 import { faLayerGroup } from "@fortawesome/free-solid-svg-icons";
 import { faPiggyBank } from "@fortawesome/free-solid-svg-icons";
 import { faHouse } from '@fortawesome/free-solid-svg-icons';
-import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';import { logout } from '../services/operations2';
+import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch } from 'react-redux';
 import { settoken } from '../slices/product';
+import { useState } from 'react'
+
 
 
 
 function Sidescroll() {
   const dispatch=useDispatch()
 const handleclick=()=>{
-  logout()
+  
+  localStorage.clear()
+  localStorage.removeItem("token")
+  localStorage.removeItem("user")
   dispatch(settoken(null))
 }
 
@@ -33,25 +38,25 @@ const handleclick=()=>{
       <div className="sidebar-menu text-white font-outfit text-base">
         <ul className='flex flex-col'>
           <li className='rounded-lg hover:bg-lgreen active:bg-bluee h-14 w-[280px] py-4'>
-            <Link to="/Dashpage" className='ml-10 flex flex-row gap-4 items-center'>
+            <Link to="/dashboard" className='ml-10 flex flex-row gap-4 items-center'>
               <FontAwesomeIcon icon={faHouse} className='text-white h-5 w-5'/>
               <p>Dashboard</p>
             </Link>
           </li>
           <li className='rounded-lg hover:bg-lgreen active:bg-bluee h-14 w-[280px] py-4'>
-            <Link to="/Products" className='ml-10 flex flex-row gap-4 items-center'>
+            <Link to="/dashboard/add" className='ml-10 flex flex-row gap-4 items-center'>
               <FontAwesomeIcon icon={faBox} className='text-white w-5 h-5' />
               <p>Products</p>
             </Link>
           </li>
           <li className='rounded-lg hover:bg-lgreen active:bg-bluee h-14 w-[280px] py-4'>
-            <Link to="/categories" className='ml-10 flex flex-row gap-4 items-center'>
+            <Link to="/dashboard/category" className='ml-10 flex flex-row gap-4 items-center'>
               <FontAwesomeIcon icon={faLayerGroup} className='text-white h-5 w-5'/>
               <p>Categories</p>
             </Link>
           </li>
           <li className='rounded-lg hover:bg-lgreen active:bg-bluee h-14 w-[280px] py-4'>
-            <Link to="/Sales" className='ml-10 flex flex-row gap-4 items-center'>
+            <Link to="/dashboard/sale" className='ml-10 flex flex-row gap-4 items-center'>
               <FontAwesomeIcon icon={faPiggyBank} className='text-white h-5 w-5'/>
               <p>Sales</p>
             </Link>

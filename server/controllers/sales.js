@@ -3,8 +3,12 @@ const con=require("../database/database")
 
 exports.addsale=async(req,res)=>{
     try{
-        const {name,quantity,totalprice,date}=req.body
+        const {name,quantity,totalprice,date,currquantity,id}=req.body
         const sale=[name,quantity,totalprice,date]
+        con.query("UPDATE product SET quantity = ? WHERE id = ?",[currquantity,id],(error,result)=>{
+            if(error) throw error
+            console.log(result)
+        })
          con.query("insert into sale (name,quantity,totalprice,date) values (?)",[sale],(error,result)=>{
             if(error) throw error
             console.log(result)

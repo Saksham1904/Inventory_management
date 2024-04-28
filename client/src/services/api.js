@@ -15,5 +15,11 @@ export const endpoint={
    GETSALES_API:BASE_URL+"/getsales",
    
    GETCATEGORYDATA_API:BASE_URL+"/productcategory",
-   DELETECATEGORY_API:BASE_URL+"/deletecategory"
+   DELETECATEGORY_API:BASE_URL+"/deletecategory",
+  
+
+    TOTALSALE_API:BASE_URL+"/totalsale",
+    TOTALPRODUCT_API:BASE_URL+"/totalproduct",
+    TOTALCATEGORY_API:BASE_URL+"/totalcategory"
+
 }

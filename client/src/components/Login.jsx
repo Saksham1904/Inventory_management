@@ -67,9 +67,9 @@ const Login = () => {
         <form onSubmit={sumbithandler} className="bg-white w-[511px] h-[419px] rounded-[12px] shadow-md">
         <div className="mt-8 mb-16 ml-[206px] text-4xl font-outfit font-bold text-dgreen"></div>
         <div>
-          <input
+          <input required
             type="text"
-            placeholder="email"
+            placeholder="Email"
             name="email"
             onChange={changehandler}
             value={data.email}
@@ -77,9 +77,9 @@ const Login = () => {
           ></input>
           </div>
           <div>
-          <input
+          <input required
             type="password"
-            placeholder="password"
+            placeholder="Password"
             name="password"
             onChange={changehandler}
             value={data.password}
@@ -88,7 +88,7 @@ const Login = () => {
           </div>
 
           <div>
-          <button className="w-150 mt-8 mb-16 ml-[181px] text-2xl bg-bluee hover:bg-dbluee text-white font-outfit font-medium py-3 px-2.5 rounded-full">Log In</button>
+          <button className="w-150 mt-8 mb-16 ml-[181px] text-2xl bg-bluee hover:bg-opacity-50 text-white font-outfit font-medium py-3 px-2.5 rounded-full">Log In</button>
           </div>
         </form>
       </div>

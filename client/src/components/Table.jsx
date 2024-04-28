@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { deleteproduct } from "../services/operation";
 import Popup from "./Popup";
 import { addsales } from "../services/operations2";
+import toast from "react-hot-toast";
 
 
 const Table = (props) => {
@@ -22,17 +23,18 @@ const Table = (props) => {
   };
 
   const handleSubmit = async (value, date) => {
-    alert(`You submitted: ${value}`);
-    alert(`You submitted: ${date.toDateString()}`);
+    
 
     const totalprice = sale.price * value;
     if (sale.quantity < value) {
-      alert("ENTERED QUANTITY IS MORE");
+      toast.error("QUANTITY EXCEED")
       return;
     }
-
-    //function call for sale table
-    await addsales(sale.name, value, totalprice, date.toDateString());
+    const currquantity=sale.quantity-value
+  //function call for sale table
+    await addsales(sale.name, sale.id,currquantity,value, totalprice, date.toDateString());
+    setsale(sale.quantity=currquantity)
+    props.setnewdata(true)
   };
 
   async function handleclick(id) {
@@ -40,12 +42,14 @@ const Table = (props) => {
 
     const res = await deleteproduct(id);
     if (res) {
+
       props.setproduct(data.filter((product) => product.id !== id));
+      props.setnewdata(true)
     }
   }
   return (
     <div>
-      <div className="flex flex-col">
+      <div className="flex flex-col mt-9 max-w-6xl ml-8 overflow-hidden">
         <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
             <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -104,7 +108,7 @@ const Table = (props) => {
                         {data.discount}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {data.category}
+                        {data.category_name}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                         <button
@@ -123,7 +127,7 @@ const Table = (props) => {
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                         <button
                           onClick={() => {
-                            handleclick(data.category);
+                            handleclick(data.id);
                           }}
                         >
                           DELETE

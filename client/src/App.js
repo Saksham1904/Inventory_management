@@ -1,7 +1,7 @@
 
 import './App.css';
 import ADD from "./components/ADD"
-// import Dashboard from './components/Dashboard';
+
 import Sidescroll from "./components/Sidescroll";
 import Topbar from './components/Topbar';
 import { useEffect } from 'react';
@@ -13,6 +13,10 @@ import Popup from "./components/Popup"
 import { useState } from 'react';
 import Sales from './components/Sales';
 import Category from './components/Category';
+import Addcategory from './components/Addcategory';
+import Product from './slices/product';
+import Landingpage from './components/Landingpage';
+
 
 
 function App() {
@@ -23,6 +27,8 @@ function App() {
       {/* app */}
 
       <Routes>
+        <Route path="/" element={<Landingpage />} />
+        
         <Route path="/login" element={<Form />} />
 
         <Route
@@ -63,7 +69,7 @@ function App() {
         </Route>
       </Routes>
 
-      <Category/>
+      
      
     </div>
 
