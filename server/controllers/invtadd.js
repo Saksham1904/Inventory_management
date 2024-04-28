@@ -33,12 +33,12 @@ exports.addinvt=async(req,res)=>{
 
 exports.deleteproduct=async(req,res)=>{
     try{
-        const {pid}=req.body
-        const {userid}=req.user
-        if(!pid){
+        const {id}=req.body
+        
+        if(!id){
             throw error
         }
-        con.query("DELETE FROM product WHERE id=? && userid=?",[pid,userid],(error,result)=>{
+        con.query("DELETE FROM product WHERE id=? ",[id],(error,result)=>{
             if(error) throw error
             console.log(result)
             res.status(200).json({
