@@ -21,19 +21,19 @@ This Inventory Management System is a full-stack application designed to efficie
 ## Screenshots
 
 ### Home 
-![Home](images/IN-Landing%20page.png)
+![Home](./Images/IN-Landing%20page.png)
 
 ### Dashboard
-![Dashboard](images/Dashboard.png)
+![Dashboard](./Images/Dashboard.png)
 
 ### Categories
-![Categories](images/Category.png)
+![Categories](./Images/Category.png)
 
 ### Products
-![Products](images/Products.png)
+![Products](./Images/Products.png)
 
 ### Sales
-![Sales](images/Sales.png)
+![Sales](./Images/Sales.png)
 
 
 ## Getting Started
