@@ -18,7 +18,7 @@ const Landingpage = () => {
           </button>
         </Link>
 
-        <p className='text-xl opacity-[61.8%] text-dgreen mt-8'>Made with Hard Work by</p>
+        <p className='text-xl opacity-[61.8%] text-dgreen mt-8'>Made by</p>
 
         <div className='name-container flex gap-[110px] text-center mt-4'>
           <div className='single-name'>

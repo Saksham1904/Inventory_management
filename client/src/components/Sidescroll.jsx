@@ -62,7 +62,7 @@ const handleclick=()=>{
             </Link>
           </li>
           <li className='rounded-lg hover:bg-lgreen active:bg-bluee h-14 w-[280px] py-4 mt-[374px]'>
-            <Link to="/login" className='ml-10 flex flex-row gap-4 items-center'>
+            <Link to="/" className='ml-10 flex flex-row gap-4 items-center'>
              
               <FontAwesomeIcon icon={faRightFromBracket} className='text-white h-5 w-5'/>
               <button onClick={handleclick}>LOGOUT</button>
